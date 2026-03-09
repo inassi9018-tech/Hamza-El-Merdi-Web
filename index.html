@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza El Merdi | English Educator & Front-End Developer</title>
+  <meta name="description" content="Professional multilingual portfolio and landing-page style website for Hamza El Merdi, English educator, linguistics teacher, and self-taught front-end developer." />
+  <style>
+    :root {
+      --bg: #071019;
+      --bg-2: #0c1726;
+      --bg-3: #101f34;
+      --surface: rgba(11, 20, 35, 0.72);
+      --surface-2: rgba(14, 26, 46, 0.9);
+      --line: rgba(148, 163, 184, 0.16);
+      --text: #eef6ff;
+      --muted: #9cb0c8;
+      --primary: #7c3aed;
+      --primary-2: #06b6d4;
+      --primary-3: #f59e0b;
+      --success: #22c55e;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.34);
+      --radius: 24px;
+      --max-width: 1280px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.18), transparent 22%),
+        radial-gradient(circle at 90% 15%, rgba(6, 182, 212, 0.14), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(245, 158, 11, 0.08), transparent 30%),
+        linear-gradient(145deg, var(--bg) 0%, var(--bg-2) 42%, var(--bg-3) 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.65;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 10, 19, 0.64);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 12px 28px rgba(124, 58, 237, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+      transform: translateX(-120%) rotate(18deg);
+      animation: shine 4.2s linear infinite;
+    }
+
+    @keyframes shine {
+      to { transform: translateX(150%) rotate(18deg); }
+    }
+
+    .brand strong {
+      display: block;
+      letter-spacing: 0.2px;
+    }
+
+    .brand small {
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button,
+    .btn,
+    .social-link,
+    .course-card,
+    .project-card,
+    .feature-card,
+    .contact-item,
+    .info-card,
+    .stack-card,
+    .timeline-item,
+    .testimonial-card {
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition), opacity var(--transition);
+    }
+
+    .lang-btn,
+    .nav-cta,
+    .btn {
+      border: 1px solid transparent;
+      cursor: pointer;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .lang-btn {
+      padding: 9px 12px;
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      color: white;
+      background: rgba(124, 58, 237, 0.18);
+      border-color: rgba(124, 58, 237, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .nav-cta {
+      padding: 11px 18px;
+      background: rgba(124, 58, 237, 0.14);
+      border-color: rgba(124, 58, 237, 0.22);
+      color: white;
+    }
+
+    .nav-cta:hover,
+    .btn:hover,
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero {
+      padding: 92px 0 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.18);
+      color: #d7fbff;
+      margin-bottom: 18px;
+      animation: floatY 4s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+      line-height: 1.02;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--primary-2), var(--primary-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 200%;
+      animation: gradientMove 7s linear infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 1.04rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 26px 0 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 18px;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      transform: translateX(-130%);
+      transition: transform 0.7s ease;
+    }
+
+    .btn:hover::before {
+      transform: translateX(130%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 16px;
+    }
+
+    .card,
+    .hero-panel,
+    .feature-card,
+    .info-card,
+    .course-card,
+    .project-card,
+    .stack-card,
+    .timeline-item,
+    .contact-card,
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before,
+    .hero-panel::before,
+    .feature-card::before,
+    .info-card::before,
+    .course-card::before,
+    .project-card::before,
+    .stack-card::before,
+    .timeline-item::before,
+    .contact-card::before,
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), transparent 35%, transparent 70%, rgba(255,255,255,0.03));
+      pointer-events: none;
+    }
+
+    .stat-card {
+      padding: 18px;
+    }
+
+    .stat-card h3 {
+      font-size: 1.9rem;
+      margin-bottom: 4px;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-panel {
+      padding: 26px;
+      background: linear-gradient(180deg, rgba(14, 26, 46, 0.95), rgba(12, 19, 34, 0.88));
+      min-height: 100%;
+    }
+
+    .scene {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+    }
+
+    .teacher-core {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #c4b5fd, var(--primary), #312e81);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 0 0 12px rgba(124, 58, 237, 0.08), 0 0 60px rgba(124, 58, 237, 0.28);
+      z-index: 3;
+      animation: pulseCore 3.8s ease-in-out infinite;
+    }
+
+    .language-ring,
+    .language-ring-2 {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px dashed rgba(156, 176, 200, 0.18);
+      animation: rotateRing 16s linear infinite;
+    }
+
+    .language-ring {
+      width: 290px;
+      height: 290px;
+    }
+
+    .language-ring-2 {
+      width: 410px;
+      height: 410px;
+      animation-direction: reverse;
+      animation-duration: 22s;
+    }
+
+    .bubble {
+      position: absolute;
+      width: 84px;
+      height: 84px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.86rem;
+      color: white;
+      background: rgba(10, 18, 32, 0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .bubble.small {
+      width: 72px;
+      height: 72px;
+      font-size: 0.8rem;
+    }
+
+    .b1 { top: -20px; left: 50%; transform: translateX(-50%); }
+    .b2 { right: -18px; top: 50%; transform: translateY(-50%); }
+    .b3 { bottom: -20px; left: 50%; transform: translateX(-50%); }
+    .b4 { left: -18px; top: 50%; transform: translateY(-50%); }
+    .b5 { top: 12px; left: 50%; transform: translateX(-50%); }
+    .b6 { right: 16px; top: 50%; transform: translateY(-50%); }
+    .b7 { bottom: 12px; left: 50%; transform: translateX(-50%); }
+    .b8 { left: 16px; top: 50%; transform: translateY(-50%); }
+
+    .floating-words span {
+      position: absolute;
+      font-size: 0.9rem;
+      color: #d8f9ff;
+      opacity: 0.7;
+      animation: floatWord 7s ease-in-out infinite;
+    }
+
+    .w1 { top: 18%; left: 8%; animation-delay: .3s; }
+    .w2 { top: 24%; right: 10%; animation-delay: 1.1s; }
+    .w3 { bottom: 22%; left: 6%; animation-delay: 1.8s; }
+    .w4 { bottom: 16%; right: 8%; animation-delay: 2.3s; }
+
+    @keyframes pulseCore {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes floatWord {
+      0%, 100% { transform: translateY(0px); opacity: 0.55; }
+      50% { transform: translateY(-10px); opacity: 1; }
+    }
+
+    section {
+      padding: 40px 0 24px;
+      position: relative;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .hero-panel-grid,
+    .about-grid,
+    .features-grid,
+    .courses-grid,
+    .projects-grid,
+    .stack-grid,
+    .timeline,
+    .testimonials-grid,
+    .contact-grid,
+    .footer-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .about-grid,
+    .contact-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .features-grid,
+    .courses-grid,
+    .projects-grid,
+    .stack-grid,
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .info-card,
+    .feature-card,
+    .course-card,
+    .project-card,
+    .stack-card,
+    .timeline-item,
+    .contact-card,
+    .testimonial-card {
+      padding: 24px;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.11);
+      border: 1px solid rgba(245, 158, 11, 0.16);
+      color: #ffe6b9;
+      font-size: 0.84rem;
+      margin-bottom: 14px;
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(6, 182, 212, 0.16));
+      border: 1px solid rgba(255,255,255,0.07);
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+
+    .info-card h3,
+    .feature-card h3,
+    .course-card h3,
+    .project-card h3,
+    .stack-card h3,
+    .timeline-item h3,
+    .contact-card h3,
+    .testimonial-card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 10px;
+    }
+
+    .info-card p,
+    .feature-card p,
+    .course-card p,
+    .project-card p,
+    .stack-card p,
+    .timeline-item p,
+    .contact-card p,
+    .testimonial-card p {
+      color: var(--muted);
+    }
+
+    .list,
+    .meta-list,
+    .project-list,
+    .contact-list,
+    .social-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .list li,
+    .project-list li {
+      list-style: none;
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .list li::before,
+    .project-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 0 16px rgba(124, 58, 237, 0.28);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.18);
+      color: #eee5ff;
+      font-size: 0.92rem;
+    }
+
+    .course-card:hover,
+    .project-card:hover,
+    .feature-card:hover,
+    .info-card:hover,
+    .stack-card:hover,
+    .timeline-item:hover,
+    .testimonial-card:hover,
+    .contact-item:hover,
+    .contact-card:hover,
+    .stat-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(124, 58, 237, 0.25);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .project-tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.16);
+      color: #dffbff;
+    }
+
+    .social-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .social-link,
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 62px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      padding: 14px;
+    }
+
+    .social-link {
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(6, 182, 212, 0.14));
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      outline: none;
+      font-size: 0.96rem;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    input:focus,
+    textarea:focus {
+      transform: translateY(-1px);
+      border-color: rgba(6, 182, 212, 0.42);
+      box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      border: none;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, var(--success), var(--primary-2));
+    }
+
+    .form-message {
+      min-height: 24px;
+      color: #dcfce7;
+      font-size: 0.94rem;
+    }
+
+    footer {
+      margin-top: 34px;
+      padding: 38px 0 26px;
+      border-top: 1px solid var(--line);
+      background: rgba(5, 10, 18, 0.46);
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+
+    .footer-note,
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px) scale(0.98);
+      transition: 0.9s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    [dir="rtl"] .hero-actions,
+    [dir="rtl"] .chips,
+    [dir="rtl"] .nav-links,
+    [dir="rtl"] .lang-switcher,
+    [dir="rtl"] .social-list,
+    [dir="rtl"] .footer-links {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .brand,
+    [dir="rtl"] .contact-item,
+    [dir="rtl"] .social-link,
+    [dir="rtl"] .nav {
+      direction: rtl;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .footer-grid,
+      .features-grid,
+      .courses-grid,
+      .projects-grid,
+      .stack-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+
+      .row-2,
+      .hero-stats,
+      .social-list,
+      .lang-switcher {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 14px 0;
+        flex-wrap: wrap;
+      }
+
+      .scene {
+        min-height: 390px;
+      }
+
+      .language-ring { width: 250px; height: 250px; }
+      .language-ring-2 { width: 340px; height: 340px; }
+      .bubble { width: 72px; height: 72px; font-size: 0.8rem; }
+      .bubble.small { width: 62px; height: 62px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <div class="logo">HM</div>
+        <div>
+          <strong id="brandName">Hamza El Merdi</strong>
+          <small id="brandRole">English Educator • Linguistics Teacher • Front-End Developer</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
+        <a href="#landing" data-i18n="nav.landing">Landing Pages</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <a href="#contact" class="nav-cta" data-i18n="nav.cta">Let’s Talk</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal visible">
+          <div class="hero-badge" data-i18n="hero.badge">Global English communication • Modern digital presence • Moroccan educator identity</div>
+          <h1 data-i18n="hero.title">Hamza El Merdi builds <span class="gradient-text">language confidence</span> and elegant front-end experiences.</h1>
+          <p data-i18n="hero.p1">This website presents Hamza El Merdi as a highly organized English educator, linguistics teacher, and self-taught front-end developer. His profile combines academic language knowledge with creative digital execution, allowing him to teach English to Moroccans and foreigners while designing refined landing pages with clarity, structure, and purpose.</p>
+          <p data-i18n="hero.p2">The design of this portfolio is intentionally unique: smooth, responsive, multilingual, and full of meaningful motion. It reflects a professional identity shaped by communication, pedagogy, visual design, and the desire to make learning and web experiences feel human, intelligent, and memorable.</p>
+
+          <div class="hero-actions">
+            <a href="#teaching" class="btn btn-primary" data-i18n="hero.btn1">Explore Teaching Services</a>
+            <a href="#landing" class="btn btn-secondary" data-i18n="hero.btn2">View Landing Pages</a>
+          </div>
+
+          <div class="hero-stats">
+            <article class="card stat-card reveal visible">
+              <h3 data-counter="3">0</h3>
+              <p data-i18n="stats.languages">Supported languages on the website</p>
+            </article>
+            <article class="card stat-card reveal visible">
+              <h3 data-counter="6">0</h3>
+              <p data-i18n="stats.sections">Organized landing page sections</p>
+            </article>
+            <article class="card stat-card reveal visible">
+              <h3 data-counter="12">0</h3>
+              <p data-i18n="stats.skills">Highlighted teaching and digital strengths</p>
+            </article>
+            <article class="card stat-card reveal visible">
+              <h3>200</h3>
+              <p data-i18n="stats.iq">Premium strategic profile presentation</p>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal visible">
+          <div class="scene">
+            <div class="language-ring">
+              <div class="bubble b1">Grammar</div>
+              <div class="bubble b2">Speaking</div>
+              <div class="bubble b3">Writing</div>
+              <div class="bubble b4">Listening</div>
+            </div>
+            <div class="language-ring-2">
+              <div class="bubble small b5">EN</div>
+              <div class="bubble small b6">FR</div>
+              <div class="bubble small b7">AR</div>
+              <div class="bubble small b8">UX</div>
+            </div>
+            <div class="teacher-core" data-i18n="scene.core">Hamza<br>El Merdi</div>
+            <div class="floating-words">
+              <span class="w1" data-i18n="scene.word1">Teach</span>
+              <span class="w2" data-i18n="scene.word2">Connect</span>
+              <span class="w3" data-i18n="scene.word3">Design</span>
+              <span class="w4" data-i18n="scene.word4">Inspire</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="about.title">About Hamza</h2>
+            <p data-i18n="about.desc">A multilingual teaching and design profile built around communication, organization, and modern web aesthetics.</p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <article class="info-card reveal">
+            <span class="label" data-i18n="about.label">Academic and professional identity</span>
+            <h3 data-i18n="about.h3">Licensed in English, specialized in linguistics, and self-educated in front-end development</h3>
+            <p data-i18n="about.p1">Hamza El Merdi brings together two powerful dimensions: language education and digital creation. With a license in English and a strong interest in linguistics, he is positioned to teach English with structure, clarity, and cultural awareness. At the same time, he has educated himself in front-end development, building landing pages and modern user interfaces that reflect elegance, responsiveness, and smart visual flow.</p>
+            <p data-i18n="about.p2">His profile is especially valuable because it connects pedagogy with design. He can explain, simplify, organize, and communicate. That same educational mindset appears in the websites he builds: every section is structured, every message is intentional, and every element is designed to guide people smoothly through an experience.</p>
+            <ul class="list">
+              <li data-i18n="about.li1">Teaches English to Moroccans and foreigners with clear communication methods.</li>
+              <li data-i18n="about.li2">Works on linguistics-focused teaching themes such as grammar, structure, and expression.</li>
+              <li data-i18n="about.li3">Creates landing pages and front-end layouts with a self-taught builder mindset.</li>
+              <li data-i18n="about.li4">Values organization, responsiveness, visual identity, and interactive motion.</li>
+            </ul>
+          </article>
+
+          <article class="info-card reveal">
+            <span class="label" data-i18n="about.label2">Key strengths</span>
+            <h3 data-i18n="about.h32">A profile where teaching logic meets digital creativity</h3>
+            <div class="chips">
+              <span class="chip" data-i18n="chip1">English Teaching</span>
+              <span class="chip" data-i18n="chip2">Linguistics</span>
+              <span class="chip" data-i18n="chip3">Front-End Development</span>
+              <span class="chip" data-i18n="chip4">Landing Page Design</span>
+              <span class="chip" data-i18n="chip5">Responsive Layouts</span>
+              <span class="chip" data-i18n="chip6">Multilingual UX</span>
+              <span class="chip" data-i18n="chip7">Visual Communication</span>
+              <span class="chip" data-i18n="chip8">Smooth Animations</span>
+            </div>
+            <div class="meta-list">
+              <div class="contact-item">
+                <div class="contact-icon">🎓</div>
+                <div>
+                  <strong data-i18n="about.card1t">Academic Focus</strong>
+                  <p data-i18n="about.card1d">English studies with a strong orientation toward linguistics and language structure.</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">💻</div>
+                <div>
+                  <strong data-i18n="about.card2t">Digital Focus</strong>
+                  <p data-i18n="about.card2d">Self-taught front-end development with an emphasis on refined landing-page composition.</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">🌍</div>
+                <div>
+                  <strong data-i18n="about.card3t">Audience Focus</strong>
+                  <p data-i18n="about.card3d">Helps both Moroccans and foreigners learn English in a practical and engaging way.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="teach.title">English Teaching Landing Section</h2>
+            <p data-i18n="teach.desc">A complete section dedicated to Hamza’s educational identity, designed like a professional service landing page.</p>
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <div class="icon">🗣️</div>
+            <h3 data-i18n="teach.c1t">Speaking Confidence</h3>
+            <p data-i18n="teach.c1d">Hamza helps learners express themselves with more fluency, confidence, and natural communication in real situations.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon">📚</div>
+            <h3 data-i18n="teach.c2t">Linguistics Teaching</h3>
+            <p data-i18n="teach.c2d">His teaching approach includes grammar, language structure, meaning, expression, and the logic behind English usage.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon">🌐</div>
+            <h3 data-i18n="teach.c3t">Moroccans and Foreigners</h3>
+            <p data-i18n="teach.c3d">The teaching identity presented here is open to local learners and international learners alike.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="courses.title">Teaching Services as Landing Blocks</h2>
+            <p data-i18n="courses.desc">Multiple organized landing sections make the homepage richer, more complete, and more professional.</p>
+          </div>
+        </div>
+
+        <div class="courses-grid">
+          <article class="course-card reveal">
+            <div class="icon">✍️</div>
+            <h3 data-i18n="courses.c1t">Grammar and Structure</h3>
+            <p data-i18n="courses.c1d">Focused explanation of sentence structure, tenses, syntax, and correct expression for learners who want real clarity.</p>
+          </article>
+          <article class="course-card reveal">
+            <div class="icon">🎧</div>
+            <h3 data-i18n="courses.c2t">Listening and Comprehension</h3>
+            <p data-i18n="courses.c2d">Activities and explanations aimed at improving understanding, interpretation, and natural language recognition.</p>
+          </article>
+          <article class="course-card reveal">
+            <div class="icon">🧩</div>
+            <h3 data-i18n="courses.c3t">Academic Linguistics</h3>
+            <p data-i18n="courses.c3d">A more intellectual teaching angle that introduces learners to meaning, structure, and language systems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="landing">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="landing.title">Landing Pages Designed by Hamza</h2>
+            <p data-i18n="landing.desc">This part of the site presents Hamza as someone who has created multiple landing-page concepts from the main page outward.</p>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-top">
+              <span class="project-tag" data-i18n="landing.tag1">Educational Landing Page</span>
+              <span>01</span>
+            </div>
+            <div class="icon">📘</div>
+            <h3 data-i18n="landing.p1t">Online English Course Page</h3>
+            <p data-i18n="landing.p1d">A clean landing page concept designed to present English lessons, student benefits, call-to-action blocks, and teacher credibility in a clear and engaging structure.</p>
+            <ul class="project-list">
+              <li data-i18n="landing.p1l1">Hero section with a strong educational value proposition.</li>
+              <li data-i18n="landing.p1l2">Student-focused benefit cards and lesson highlights.</li>
+              <li data-i18n="landing.p1l3">Animated call-to-action buttons and trust sections.</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <span class="project-tag" data-i18n="landing.tag2">Personal Brand Page</span>
+              <span>02</span>
+            </div>
+            <div class="icon">✨</div>
+            <h3 data-i18n="landing.p2t">Teacher Portfolio Landing Page</h3>
+            <p data-i18n="landing.p2d">A modern personal brand page presenting a teacher’s profile, teaching philosophy, service sections, learner testimonials, and contact pathways with a premium layout.</p>
+            <ul class="project-list">
+              <li data-i18n="landing.p2l1">Elegant sections for biography, teaching, and credibility.</li>
+              <li data-i18n="landing.p2l2">Smooth scrolling storytelling from top to bottom.</li>
+              <li data-i18n="landing.p2l3">Strong responsive behavior across desktop and mobile.</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <span class="project-tag" data-i18n="landing.tag3">Service Promotion Page</span>
+              <span>03</span>
+            </div>
+            <div class="icon">🚀</div>
+            <h3 data-i18n="landing.p3t">Conversion-Oriented Landing Layout</h3>
+            <p data-i18n="landing.p3d">A service-focused landing structure designed to convert visitors into learners or clients through strategic sections, interactive buttons, and organized content flow.</p>
+            <ul class="project-list">
+              <li data-i18n="landing.p3l1">High-impact headline and strong visual rhythm.</li>
+              <li data-i18n="landing.p3l2">Strategic use of sections to guide attention and interest.</li>
+              <li data-i18n="landing.p3l3">Interactive elements built to feel modern and dynamic.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="skills.title">Skills, Stack, and Professional Value</h2>
+            <p data-i18n="skills.desc">A highly organized section that presents Hamza’s strengths across language teaching and front-end development.</p>
+          </div>
+        </div>
+
+        <div class="stack-grid">
+          <article class="stack-card reveal">
+            <div class="icon">🎯</div>
+            <h3 data-i18n="skills.c1t">Teaching Clarity</h3>
+            <p data-i18n="skills.c1d">Ability to explain language concepts with structure, simplicity, and educational intention.</p>
+          </article>
+          <article class="stack-card reveal">
+            <div class="icon">🖥️</div>
+            <h3 data-i18n="skills.c2t">Front-End Self-Education</h3>
+            <p data-i18n="skills.c2d">Built through personal effort, experimentation, and continuous practice in HTML, CSS, JavaScript, and responsive design logic.</p>
+          </article>
+          <article class="stack-card reveal">
+            <div class="icon">🎨</div>
+            <h3 data-i18n="skills.c3t">Unique Visual Design</h3>
+            <p data-i18n="skills.c3d">Strong interest in creating interfaces that feel smooth, alive, organized, and memorable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="journey.title">Professional Journey</h2>
+            <p data-i18n="journey.desc">A narrative timeline that gives the site more depth and a stronger premium identity.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="label" data-i18n="journey.l1">Stage 1</span>
+            <h3 data-i18n="journey.t1">Academic grounding in English and linguistics</h3>
+            <p data-i18n="journey.d1">Hamza built a foundation in English studies and developed a serious interest in how language works, how it is taught, and how learners understand it.</p>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="label" data-i18n="journey.l2">Stage 2</span>
+            <h3 data-i18n="journey.t2">Self-education in front-end development</h3>
+            <p data-i18n="journey.d2">Alongside teaching and language, he explored the digital world independently, learning how to build interfaces, landing pages, and visually structured experiences.</p>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="label" data-i18n="journey.l3">Stage 3</span>
+            <h3 data-i18n="journey.t3">Combining education with digital identity</h3>
+            <p data-i18n="journey.d3">Today, the portfolio presents a profile that can teach, communicate, design, and organize experiences for learners and audiences with sophistication.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="testi.title">Professional Impression Section</h2>
+            <p data-i18n="testi.desc">These testimonial-style blocks enrich the homepage and make the presentation feel more complete.</p>
+          </div>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal">
+            <div class="icon">💬</div>
+            <h3 data-i18n="testi.c1t">Clear Communication</h3>
+            <p data-i18n="testi.c1d">The website presents Hamza as someone who can teach with clarity and connect with learners in a direct and human way.</p>
+          </article>
+          <article class="testimonial-card reveal">
+            <div class="icon">📱</div>
+            <h3 data-i18n="testi.c2t">Responsive Experience</h3>
+            <p data-i18n="testi.c2d">Every section is designed to feel smooth, responsive, and organized across different devices and screen sizes.</p>
+          </article>
+          <article class="testimonial-card reveal">
+            <div class="icon">🌟</div>
+            <h3 data-i18n="testi.c3t">Premium Presentation</h3>
+            <p data-i18n="testi.c3d">The visual language is high-end and expressive, turning the portfolio into a statement of identity rather than just an ordinary page.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2 data-i18n="contact.title">Contact Hamza</h2>
+            <p data-i18n="contact.desc">A polished communication section where visitors can reach Hamza through email, WhatsApp, or Instagram.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card reveal">
+            <h3 data-i18n="contact.h3">Direct contact details</h3>
+            <p data-i18n="contact.p">This section is designed so visitors, learners, or collaborators can contact Hamza quickly and clearly.</p>
+            <div class="contact-list">
+              <a class="contact-item" href="mailto:hamzamordi30@gmail.com">
+                <div class="contact-icon">@</div>
+                <div>
+                  <strong data-i18n="contact.email">Email</strong>
+                  <p>hamzamordi30@gmail.com</p>
+                </div>
+              </a>
+              <a class="contact-item" href="https://wa.me/212680482434" target="_blank" rel="noopener noreferrer">
+                <div class="contact-icon">☎</div>
+                <div>
+                  <strong data-i18n="contact.whatsapp">WhatsApp</strong>
+                  <p>0680482434</p>
+                </div>
+              </a>
+              <a class="contact-item" href="https://www.instagram.com/hamzaev____/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">
+                <div class="contact-icon">◉</div>
+                <div>
+                  <strong data-i18n="contact.instagram">Instagram</strong>
+                  <p>@hamzaev____</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="social-list">
+              <a class="social-link" href="mailto:hamzamordi30@gmail.com" data-i18n="social.email">Send Email</a>
+              <a class="social-link" href="https://wa.me/212680482434" target="_blank" rel="noopener noreferrer" data-i18n="social.whatsapp">Open WhatsApp</a>
+              <a class="social-link" href="https://www.instagram.com/hamzaev____/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" data-i18n="social.instagram">Visit Instagram</a>
+            </div>
+          </article>
+
+          <article class="contact-card reveal">
+            <h3 data-i18n="form.title">Send a message</h3>
+            <form id="contactForm">
+              <div class="row-2">
+                <input type="text" id="name" data-placeholder="form.name" placeholder="Your name" required />
+                <input type="email" id="email" data-placeholder="form.email" placeholder="Your email" required />
+              </div>
+              <input type="text" id="subject" data-placeholder="form.subject" placeholder="Subject" required />
+              <textarea id="message" data-placeholder="form.message" placeholder="Write your message here..." required></textarea>
+              <button type="submit" class="submit-btn" data-i18n="form.button">Prepare Message</button>
+              <p class="form-message" id="formMessage"></p>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3 id="footerName">Hamza El Merdi</h3>
+        <p class="footer-note" data-i18n="footer.note">Multilingual portfolio for English teaching, linguistics, and front-end landing page design.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home" data-i18n="footer.home">Home</a>
+        <a href="#about" data-i18n="footer.about">About</a>
+        <a href="#landing" data-i18n="footer.work">Work</a>
+        <a href="#contact" data-i18n="footer.contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        'nav.home': 'Home', 'nav.about': 'About', 'nav.teaching': 'Teaching', 'nav.landing': 'Landing Pages', 'nav.skills': 'Skills', 'nav.contact': 'Contact', 'nav.cta': 'Let’s Talk',
+        'hero.badge': 'Global English communication • Modern digital presence • Moroccan educator identity',
+        'hero.title': 'Hamza El Merdi builds <span class="gradient-text">language confidence</span> and elegant front-end experiences.',
+        'hero.p1': 'This website presents Hamza El Merdi as a highly organized English educator, linguistics teacher, and self-taught front-end developer. His profile combines academic language knowledge with creative digital execution, allowing him to teach English to Moroccans and foreigners while designing refined landing pages with clarity, structure, and purpose.',
+        'hero.p2': 'The design of this portfolio is intentionally unique: smooth, responsive, multilingual, and full of meaningful motion. It reflects a professional identity shaped by communication, pedagogy, visual design, and the desire to make learning and web experiences feel human, intelligent, and memorable.',
+        'hero.btn1': 'Explore Teaching Services', 'hero.btn2': 'View Landing Pages',
+        'stats.languages': 'Supported languages on the website', 'stats.sections': 'Organized landing page sections', 'stats.skills': 'Highlighted teaching and digital strengths', 'stats.iq': 'Premium strategic profile presentation',
+        'scene.core': 'Hamza<br>El Merdi', 'scene.word1': 'Teach', 'scene.word2': 'Connect', 'scene.word3': 'Design', 'scene.word4': 'Inspire',
+        'about.title': 'About Hamza', 'about.desc': 'A multilingual teaching and design profile built around communication, organization, and modern web aesthetics.', 'about.label': 'Academic and professional identity',
+        'about.h3': 'Licensed in English, specialized in linguistics, and self-educated in front-end development',
+        'about.p1': 'Hamza El Merdi brings together two powerful dimensions: language education and digital creation. With a license in English and a strong interest in linguistics, he is positioned to teach English with structure, clarity, and cultural awareness. At the same time, he has educated himself in front-end development, building landing pages and modern user interfaces that reflect elegance, responsiveness, and smart visual flow.',
+        'about.p2': 'His profile is especially valuable because it connects pedagogy with design. He can explain, simplify, organize, and communicate. That same educational mindset appears in the websites he builds: every section is structured, every message is intentional, and every element is designed to guide people smoothly through an experience.',
+        'about.li1': 'Teaches English to Moroccans and foreigners with clear communication methods.', 'about.li2': 'Works on linguistics-focused teaching themes such as grammar, structure, and expression.', 'about.li3': 'Creates landing pages and front-end layouts with a self-taught builder mindset.', 'about.li4': 'Values organization, responsiveness, visual identity, and interactive motion.',
+        'about.label2': 'Key strengths', 'about.h32': 'A profile where teaching logic meets digital creativity',
+        'about.card1t': 'Academic Focus', 'about.card1d': 'English studies with a strong orientation toward linguistics and language structure.', 'about.card2t': 'Digital Focus', 'about.card2d': 'Self-taught front-end development with an emphasis on refined landing-page composition.', 'about.card3t': 'Audience Focus', 'about.card3d': 'Helps both Moroccans and foreigners learn English in a practical and engaging way.',
+        'teach.title': 'English Teaching Landing Section', 'teach.desc': 'A complete section dedicated to Hamza’s educational identity, designed like a professional service landing page.',
+        'teach.c1t': 'Speaking Confidence', 'teach.c1d': 'Hamza helps learners express themselves with more fluency, confidence, and natural communication in real situations.',
+        'teach.c2t': 'Linguistics Teaching', 'teach.c2d': 'His teaching approach includes grammar, language structure, meaning, expression, and the logic behind English usage.',
+        'teach.c3t': 'Moroccans and Foreigners', 'teach.c3d': 'The teaching identity presented here is open to local learners and international learners alike.',
+        'courses.title': 'Teaching Services as Landing Blocks', 'courses.desc': 'Multiple organized landing sections make the homepage richer, more complete, and more professional.',
+        'courses.c1t': 'Grammar and Structure', 'courses.c1d': 'Focused explanation of sentence structure, tenses, syntax, and correct expression for learners who want real clarity.',
+        'courses.c2t': 'Listening and Comprehension', 'courses.c2d': 'Activities and explanations aimed at improving understanding, interpretation, and natural language recognition.',
+        'courses.c3t': 'Academic Linguistics', 'courses.c3d': 'A more intellectual teaching angle that introduces learners to meaning, structure, and language systems.',
+        'landing.title': 'Landing Pages Designed by Hamza', 'landing.desc': 'This part of the site presents Hamza as someone who has created multiple landing-page concepts from the main page outward.',
+        'landing.tag1': 'Educational Landing Page', 'landing.p1t': 'Online English Course Page', 'landing.p1d': 'A clean landing page concept designed to present English lessons, student benefits, call-to-action blocks, and teacher credibility in a clear and engaging structure.', 'landing.p1l1': 'Hero section with a strong educational value proposition.', 'landing.p1l2': 'Student-focused benefit cards and lesson highlights.', 'landing.p1l3': 'Animated call-to-action buttons and trust sections.',
+        'landing.tag2': 'Personal Brand Page', 'landing.p2t': 'Teacher Portfolio Landing Page', 'landing.p2d': 'A modern personal brand page presenting a teacher’s profile, teaching philosophy, service sections, learner testimonials, and contact pathways with a premium layout.', 'landing.p2l1': 'Elegant sections for biography, teaching, and credibility.', 'landing.p2l2': 'Smooth scrolling storytelling from top to bottom.', 'landing.p2l3': 'Strong responsive behavior across desktop and mobile.',
+        'landing.tag3': 'Service Promotion Page', 'landing.p3t': 'Conversion-Oriented Landing Layout', 'landing.p3d': 'A service-focused landing structure designed to convert visitors into learners or clients through strategic sections, interactive buttons, and organized content flow.', 'landing.p3l1': 'High-impact headline and strong visual rhythm.', 'landing.p3l2': 'Strategic use of sections to guide attention and interest.', 'landing.p3l3': 'Interactive elements built to feel modern and dynamic.',
+        'skills.title': 'Skills, Stack, and Professional Value', 'skills.desc': 'A highly organized section that presents Hamza’s strengths across language teaching and front-end development.',
+        'skills.c1t': 'Teaching Clarity', 'skills.c1d': 'Ability to explain language concepts with structure, simplicity, and educational intention.',
+        'skills.c2t': 'Front-End Self-Education', 'skills.c2d': 'Built through personal effort, experimentation, and continuous practice in HTML, CSS, JavaScript, and responsive design logic.',
+        'skills.c3t': 'Unique Visual Design', 'skills.c3d': 'Strong interest in creating interfaces that feel smooth, alive, organized, and memorable.',
+        'journey.title': 'Professional Journey', 'journey.desc': 'A narrative timeline that gives the site more depth and a stronger premium identity.', 'journey.l1': 'Stage 1', 'journey.t1': 'Academic grounding in English and linguistics', 'journey.d1': 'Hamza built a foundation in English studies and developed a serious interest in how language works, how it is taught, and how learners understand it.', 'journey.l2': 'Stage 2', 'journey.t2': 'Self-education in front-end development', 'journey.d2': 'Alongside teaching and language, he explored the digital world independently, learning how to build interfaces, landing pages, and visually structured experiences.', 'journey.l3': 'Stage 3', 'journey.t3': 'Combining education with digital identity', 'journey.d3': 'Today, the portfolio presents a profile that can teach, communicate, design, and organize experiences for learners and audiences with sophistication.',
+        'testi.title': 'Professional Impression Section', 'testi.desc': 'These testimonial-style blocks enrich the homepage and make the presentation feel more complete.', 'testi.c1t': 'Clear Communication', 'testi.c1d': 'The website presents Hamza as someone who can teach with clarity and connect with learners in a direct and human way.', 'testi.c2t': 'Responsive Experience', 'testi.c2d': 'Every section is designed to feel smooth, responsive, and organized across different devices and screen sizes.', 'testi.c3t': 'Premium Presentation', 'testi.c3d': 'The visual language is high-end and expressive, turning the portfolio into a statement of identity rather than just an ordinary page.',
+        'contact.title': 'Contact Hamza', 'contact.desc': 'A polished communication section where visitors can reach Hamza through email, WhatsApp, or Instagram.', 'contact.h3': 'Direct contact details', 'contact.p': 'This section is designed so visitors, learners, or collaborators can contact Hamza quickly and clearly.', 'contact.email': 'Email', 'contact.whatsapp': 'WhatsApp', 'contact.instagram': 'Instagram',
+        'social.email': 'Send Email', 'social.whatsapp': 'Open WhatsApp', 'social.instagram': 'Visit Instagram',
+        'form.title': 'Send a message', 'form.name': 'Your name', 'form.email': 'Your email', 'form.subject': 'Subject', 'form.message': 'Write your message here...', 'form.button': 'Prepare Message',
+        'footer.note': 'Multilingual portfolio for English teaching, linguistics, and front-end landing page design.', 'footer.home': 'Home', 'footer.about': 'About', 'footer.work': 'Work', 'footer.contact': 'Contact'
+      },
+      fr: {
+        'nav.home': 'Accueil', 'nav.about': 'À propos', 'nav.teaching': 'Enseignement', 'nav.landing': 'Landing pages', 'nav.skills': 'Compétences', 'nav.contact': 'Contact', 'nav.cta': 'Parlons',
+        'hero.badge': 'Communication anglaise globale • Présence digitale moderne • Identité marocaine d’enseignant',
+        'hero.title': 'Hamza El Merdi développe la <span class="gradient-text">confiance linguistique</span> et des expériences front-end élégantes.',
+        'hero.p1': 'Ce site présente Hamza El Merdi comme un enseignant d’anglais très organisé, professeur de linguistique et développeur front-end autodidacte. Son profil associe savoir académique en langue et exécution numérique créative, ce qui lui permet d’enseigner l’anglais aux Marocains et aux étrangers tout en concevant des landing pages raffinées, structurées et utiles.',
+        'hero.p2': 'Le design de ce portfolio est volontairement unique : fluide, responsive, multilingue et riche en mouvement. Il reflète une identité professionnelle façonnée par la communication, la pédagogie, le design visuel et le désir de rendre l’apprentissage et les expériences web plus humaines, intelligentes et mémorables.',
+        'hero.btn1': 'Découvrir les services d’enseignement', 'hero.btn2': 'Voir les landing pages',
+        'stats.languages': 'Langues prises en charge sur le site', 'stats.sections': 'Sections de landing page organisées', 'stats.skills': 'Forces pédagogiques et digitales mises en avant', 'stats.iq': 'Présentation stratégique premium du profil',
+        'scene.core': 'Hamza<br>El Merdi', 'scene.word1': 'Enseigner', 'scene.word2': 'Relier', 'scene.word3': 'Concevoir', 'scene.word4': 'Inspirer',
+        'about.title': 'À propos de Hamza', 'about.desc': 'Un profil multilingue d’enseignement et de design construit autour de la communication, de l’organisation et d’une esthétique web moderne.', 'about.label': 'Identité académique et professionnelle',
+        'about.h3': 'Titulaire d’une licence en anglais, spécialisé en linguistique et autodidacte en développement front-end',
+        'about.p1': 'Hamza El Merdi réunit deux dimensions puissantes : l’enseignement des langues et la création digitale. Avec une licence en anglais et un fort intérêt pour la linguistique, il est en mesure d’enseigner l’anglais avec structure, clarté et sens culturel. En parallèle, il s’est formé lui-même au front-end, en créant des landing pages et des interfaces modernes qui reflètent élégance, réactivité et fluidité visuelle.',
+        'about.p2': 'Son profil a une vraie valeur car il relie pédagogie et design. Il sait expliquer, simplifier, organiser et communiquer. Cette logique éducative apparaît aussi dans les sites qu’il conçoit : chaque section est structurée, chaque message est intentionnel, et chaque élément guide l’utilisateur avec fluidité.',
+        'about.li1': 'Enseigne l’anglais aux Marocains et aux étrangers avec des méthodes de communication claires.', 'about.li2': 'Travaille sur des thèmes liés à la linguistique comme la grammaire, la structure et l’expression.', 'about.li3': 'Crée des landing pages et des interfaces front-end avec une logique d’autodidacte bâtisseur.', 'about.li4': 'Valorise l’organisation, le responsive, l’identité visuelle et le mouvement interactif.',
+        'about.label2': 'Forces clés', 'about.h32': 'Un profil où la logique pédagogique rencontre la créativité digitale',
+        'about.card1t': 'Orientation académique', 'about.card1d': 'Études anglaises avec une forte orientation vers la linguistique et la structure du langage.', 'about.card2t': 'Orientation digitale', 'about.card2d': 'Développement front-end autodidacte avec une attention particulière pour la composition de landing pages raffinées.', 'about.card3t': 'Public visé', 'about.card3d': 'Aide les Marocains et les étrangers à apprendre l’anglais de manière pratique et engageante.',
+        'teach.title': 'Section landing dédiée à l’enseignement de l’anglais', 'teach.desc': 'Une section complète consacrée à l’identité éducative de Hamza, conçue comme une landing page de service professionnelle.',
+        'teach.c1t': 'Confiance à l’oral', 'teach.c1d': 'Hamza aide les apprenants à s’exprimer avec plus d’aisance, de confiance et de naturel dans des situations réelles.',
+        'teach.c2t': 'Enseignement de la linguistique', 'teach.c2d': 'Son approche pédagogique inclut la grammaire, la structure du langage, le sens, l’expression et la logique de l’usage de l’anglais.',
+        'teach.c3t': 'Marocains et étrangers', 'teach.c3d': 'L’identité pédagogique présentée ici s’adresse aussi bien aux apprenants locaux qu’internationaux.',
+        'courses.title': 'Services d’enseignement comme blocs de landing page', 'courses.desc': 'Plusieurs sections organisées rendent la page d’accueil plus riche, plus complète et plus professionnelle.',
+        'courses.c1t': 'Grammaire et structure', 'courses.c1d': 'Explication ciblée de la structure des phrases, des temps, de la syntaxe et de l’expression correcte pour les apprenants qui veulent une vraie clarté.',
+        'courses.c2t': 'Écoute et compréhension', 'courses.c2d': 'Activités et explications destinées à améliorer la compréhension, l’interprétation et la reconnaissance naturelle de la langue.',
+        'courses.c3t': 'Linguistique académique', 'courses.c3d': 'Une approche plus intellectuelle qui introduit les apprenants au sens, à la structure et aux systèmes du langage.',
+        'landing.title': 'Landing pages conçues par Hamza', 'landing.desc': 'Cette partie présente Hamza comme quelqu’un qui a créé plusieurs concepts de landing pages à partir de la page principale.',
+        'landing.tag1': 'Landing page éducative', 'landing.p1t': 'Page de cours d’anglais en ligne', 'landing.p1d': 'Un concept de landing page propre conçu pour présenter des leçons d’anglais, les bénéfices étudiants, des blocs d’appel à l’action et la crédibilité de l’enseignant dans une structure claire et engageante.', 'landing.p1l1': 'Hero section avec une proposition de valeur éducative forte.', 'landing.p1l2': 'Cartes de bénéfices centrées sur l’étudiant et points forts des leçons.', 'landing.p1l3': 'Boutons animés d’appel à l’action et sections de confiance.',
+        'landing.tag2': 'Page de marque personnelle', 'landing.p2t': 'Landing page portfolio enseignant', 'landing.p2d': 'Une page de marque personnelle moderne présentant le profil d’un enseignant, sa philosophie pédagogique, ses services, des témoignages et des voies de contact dans une mise en page premium.', 'landing.p2l1': 'Sections élégantes pour la biographie, l’enseignement et la crédibilité.', 'landing.p2l2': 'Narration fluide du haut vers le bas.', 'landing.p2l3': 'Comportement responsive fort sur ordinateur et mobile.',
+        'landing.tag3': 'Page de promotion de service', 'landing.p3t': 'Mise en page orientée conversion', 'landing.p3d': 'Une structure de landing page pensée pour convertir les visiteurs en apprenants ou clients grâce à des sections stratégiques, des boutons interactifs et un contenu organisé.', 'landing.p3l1': 'Titre à fort impact et rythme visuel marqué.', 'landing.p3l2': 'Usage stratégique des sections pour guider l’attention et l’intérêt.', 'landing.p3l3': 'Éléments interactifs conçus pour paraître modernes et dynamiques.',
+        'skills.title': 'Compétences, stack et valeur professionnelle', 'skills.desc': 'Une section très organisée qui présente les forces de Hamza en enseignement des langues et en développement front-end.',
+        'skills.c1t': 'Clarté pédagogique', 'skills.c1d': 'Capacité à expliquer les concepts linguistiques avec structure, simplicité et intention éducative.',
+        'skills.c2t': 'Formation front-end autodidacte', 'skills.c2d': 'Construite par effort personnel, expérimentation et pratique continue en HTML, CSS, JavaScript et logique responsive.',
+        'skills.c3t': 'Design visuel unique', 'skills.c3d': 'Fort intérêt pour la création d’interfaces fluides, vivantes, organisées et mémorables.',
+        'journey.title': 'Parcours professionnel', 'journey.desc': 'Une chronologie narrative qui donne plus de profondeur au site et une identité premium plus forte.', 'journey.l1': 'Étape 1', 'journey.t1': 'Base académique en anglais et linguistique', 'journey.d1': 'Hamza a construit une base en études anglaises et a développé un intérêt sérieux pour le fonctionnement de la langue, son enseignement et la manière dont les apprenants la comprennent.', 'journey.l2': 'Étape 2', 'journey.t2': 'Autoformation en développement front-end', 'journey.d2': 'En parallèle de l’enseignement et de la langue, il a exploré le monde numérique de façon autonome, apprenant à construire des interfaces, des landing pages et des expériences visuellement structurées.', 'journey.l3': 'Étape 3', 'journey.t3': 'Combiner l’éducation et l’identité digitale', 'journey.d3': 'Aujourd’hui, le portfolio présente un profil capable d’enseigner, de communiquer, de concevoir et d’organiser des expériences pour les apprenants et les audiences avec sophistication.',
+        'testi.title': 'Section d’impression professionnelle', 'testi.desc': 'Ces blocs de style témoignage enrichissent la page d’accueil et rendent la présentation plus complète.', 'testi.c1t': 'Communication claire', 'testi.c1d': 'Le site présente Hamza comme quelqu’un qui peut enseigner avec clarté et créer une connexion directe et humaine avec les apprenants.', 'testi.c2t': 'Expérience responsive', 'testi.c2d': 'Chaque section est conçue pour être fluide, responsive et organisée sur différents appareils et tailles d’écran.', 'testi.c3t': 'Présentation premium', 'testi.c3d': 'Le langage visuel est haut de gamme et expressif, transformant le portfolio en véritable déclaration d’identité.',
+        'contact.title': 'Contacter Hamza', 'contact.desc': 'Une section de communication soignée où les visiteurs peuvent joindre Hamza par email, WhatsApp ou Instagram.', 'contact.h3': 'Coordonnées directes', 'contact.p': 'Cette section est conçue pour que visiteurs, apprenants ou collaborateurs puissent contacter Hamza rapidement et clairement.', 'contact.email': 'Email', 'contact.whatsapp': 'WhatsApp', 'contact.instagram': 'Instagram',
+        'social.email': 'Envoyer un email', 'social.whatsapp': 'Ouvrir WhatsApp', 'social.instagram': 'Voir Instagram',
+        'form.title': 'Envoyer un message', 'form.name': 'Votre nom', 'form.email': 'Votre email', 'form.subject': 'Objet', 'form.message': 'Écrivez votre message ici...', 'form.button': 'Préparer le message',
+        'footer.note': 'Portfolio multilingue pour l’enseignement de l’anglais, la linguistique et le design de landing pages front-end.', 'footer.home': 'Accueil', 'footer.about': 'À propos', 'footer.work': 'Travail', 'footer.contact': 'Contact'
+      },
+      ar: {
+        'nav.home': 'الرئيسية', 'nav.about': 'حول', 'nav.teaching': 'التدريس', 'nav.landing': 'صفحات الهبوط', 'nav.skills': 'المهارات', 'nav.contact': 'التواصل', 'nav.cta': 'لنتحدث',
+        'hero.badge': 'تواصل إنجليزي عالمي • حضور رقمي حديث • هوية مدرس مغربي',
+        'hero.title': 'حمزة المردي يصنع <span class="gradient-text">الثقة اللغوية</span> وتجارب واجهات أمامية أنيقة.',
+        'hero.p1': 'يقدم هذا الموقع حمزة المردي كمدرس لغة إنجليزية منظم للغاية، وأستاذ في اللسانيات، ومطور واجهات أمامية عصامي. يجمع ملفه بين المعرفة الأكاديمية باللغة والتنفيذ الرقمي الإبداعي، مما يسمح له بتدريس الإنجليزية للمغاربة والأجانب مع تصميم صفحات هبوط راقية واضحة البنية وذات هدف.',
+        'hero.p2': 'تم تصميم هذا البورتفوليو ليكون فريدًا: سلسًا، متجاوبًا، متعدد اللغات، ومليئًا بالحركة الهادفة. وهو يعكس هوية مهنية تشكلت من التواصل، والبيداغوجيا، والتصميم البصري، والرغبة في جعل التعلم وتجارب الويب أكثر إنسانية وذكاءً وتأثيرًا.',
+        'hero.btn1': 'اكتشف خدمات التدريس', 'hero.btn2': 'شاهد صفحات الهبوط',
+        'stats.languages': 'اللغات المدعومة في الموقع', 'stats.sections': 'أقسام صفحات الهبوط المنظمة', 'stats.skills': 'نقاط القوة التعليمية والرقمية', 'stats.iq': 'عرض استراتيجي فاخر للملف الشخصي',
+        'scene.core': 'حمزة<br>المردي', 'scene.word1': 'علّم', 'scene.word2': 'تواصل', 'scene.word3': 'صمّم', 'scene.word4': 'ألهم',
+        'about.title': 'حول حمزة', 'about.desc': 'ملف متعدد اللغات في التدريس والتصميم مبني على التواصل والتنظيم وجماليات الويب الحديثة.', 'about.label': 'الهوية الأكاديمية والمهنية',
+        'about.h3': 'حاصل على الإجازة في الإنجليزية، متخصص في اللسانيات، ومتعلّم ذاتيًا في تطوير الواجهات الأمامية',
+        'about.p1': 'يجمع حمزة المردي بين بُعدين قويين: تعليم اللغة والإبداع الرقمي. بفضل إجازته في الإنجليزية واهتمامه الكبير باللسانيات، فهو قادر على تدريس الإنجليزية ببنية واضحة ووعي ثقافي. وفي الوقت نفسه، قام بتعليم نفسه تطوير الواجهات الأمامية، فبنى صفحات هبوط وواجهات حديثة تعكس الأناقة والتجاوب والانسيابية البصرية.',
+        'about.p2': 'تكمن قيمة ملفه في أنه يربط بين البيداغوجيا والتصميم. فهو يشرح، ويبسط، وينظم، ويتواصل. وتظهر هذه العقلية التعليمية أيضًا في المواقع التي يبنيها: كل قسم منظم، وكل رسالة مقصودة، وكل عنصر مصمم لقيادة المستخدم بسلاسة داخل التجربة.',
+        'about.li1': 'يدرّس الإنجليزية للمغاربة والأجانب بطرق تواصل واضحة.', 'about.li2': 'يشتغل على مواضيع لسانياتية مثل القواعد والبنية والتعبير.', 'about.li3': 'ينشئ صفحات هبوط وواجهات أمامية بعقلية البنّاء العصامي.', 'about.li4': 'يهتم بالتنظيم، والتجاوب، والهوية البصرية، والحركة التفاعلية.',
+        'about.label2': 'نقاط القوة', 'about.h32': 'ملف يجمع بين منطق التدريس والإبداع الرقمي',
+        'about.card1t': 'التركيز الأكاديمي', 'about.card1d': 'دراسات إنجليزية مع توجه قوي نحو اللسانيات وبنية اللغة.', 'about.card2t': 'التركيز الرقمي', 'about.card2d': 'تعلم ذاتي في تطوير الواجهات مع اهتمام خاص ببناء صفحات هبوط راقية.', 'about.card3t': 'الفئة المستهدفة', 'about.card3d': 'يساعد المغاربة والأجانب على تعلم الإنجليزية بطريقة عملية ومشوقة.',
+        'teach.title': 'قسم هبوط خاص بتدريس الإنجليزية', 'teach.desc': 'قسم كامل مخصص للهوية التعليمية لحمزة، مصمم مثل صفحة خدمة احترافية.',
+        'teach.c1t': 'الثقة في التحدث', 'teach.c1d': 'يساعد حمزة المتعلمين على التعبير بطلاقة وثقة وطبيعية أكبر في المواقف الواقعية.',
+        'teach.c2t': 'تدريس اللسانيات', 'teach.c2d': 'تشمل طريقته في التدريس القواعد، وبنية اللغة، والمعنى، والتعبير، ومنطق استعمال الإنجليزية.',
+        'teach.c3t': 'للمغاربة والأجانب', 'teach.c3d': 'الهوية التعليمية المقدمة هنا مفتوحة للمتعلمين المحليين والدوليين معًا.',
+        'courses.title': 'خدمات التدريس ككتل هبوط منظمة', 'courses.desc': 'تجعل الأقسام المتعددة المنظمة الصفحة الرئيسية أغنى وأكثر اكتمالًا واحترافية.',
+        'courses.c1t': 'القواعد والبنية', 'courses.c1d': 'شرح مركز لبنية الجملة والأزمنة والنحو والتعبير الصحيح للمتعلمين الذين يريدون وضوحًا حقيقيًا.',
+        'courses.c2t': 'الاستماع والفهم', 'courses.c2d': 'أنشطة وشروحات تهدف إلى تحسين الفهم والتفسير والتعرف الطبيعي على اللغة.',
+        'courses.c3t': 'اللسانيات الأكاديمية', 'courses.c3d': 'زاوية تعليمية أكثر عمقًا تقدم للمتعلمين المعنى والبنية وأنظمة اللغة.',
+        'landing.title': 'صفحات هبوط صممها حمزة', 'landing.desc': 'يعرض هذا الجزء حمزة كشخص أنشأ عدة مفاهيم لصفحات الهبوط انطلاقًا من الصفحة الرئيسية.',
+        'landing.tag1': 'صفحة هبوط تعليمية', 'landing.p1t': 'صفحة دورة إنجليزية عبر الإنترنت', 'landing.p1d': 'مفهوم لصفحة هبوط نظيفة صُمم لعرض دروس الإنجليزية، وفوائد الطلاب، وكتل الدعوة إلى الإجراء، ومصداقية المدرس ضمن بنية واضحة وجذابة.', 'landing.p1l1': 'قسم رئيسي بقيمة تعليمية قوية.', 'landing.p1l2': 'بطاقات فوائد موجهة للطلاب وأبرز الدروس.', 'landing.p1l3': 'أزرار متحركة للدعوة إلى الإجراء وأقسام للثقة.',
+        'landing.tag2': 'صفحة علامة شخصية', 'landing.p2t': 'صفحة هبوط لبورتفوليو مدرس', 'landing.p2d': 'صفحة علامة شخصية حديثة تعرض ملف المدرس، وفلسفته التعليمية، وخدماته، وانطباعات المتعلمين، وطرق التواصل ضمن تصميم فاخر.', 'landing.p2l1': 'أقسام أنيقة للسيرة والتدريس والمصداقية.', 'landing.p2l2': 'سرد سلس من الأعلى إلى الأسفل.', 'landing.p2l3': 'تجاوب قوي على الحاسوب والهاتف.',
+        'landing.tag3': 'صفحة ترويج خدمة', 'landing.p3t': 'تصميم موجه للتحويل', 'landing.p3d': 'بنية صفحة هبوط موجهة لتحويل الزوار إلى متعلمين أو عملاء عبر أقسام استراتيجية وأزرار تفاعلية وتدفق محتوى منظم.', 'landing.p3l1': 'عنوان قوي وإيقاع بصري واضح.', 'landing.p3l2': 'استخدام استراتيجي للأقسام لتوجيه الانتباه والاهتمام.', 'landing.p3l3': 'عناصر تفاعلية تبدو حديثة وديناميكية.',
+        'skills.title': 'المهارات والستاك والقيمة المهنية', 'skills.desc': 'قسم منظم جدًا يقدم نقاط قوة حمزة في تعليم اللغة وتطوير الواجهات الأمامية.',
+        'skills.c1t': 'وضوح في التدريس', 'skills.c1d': 'القدرة على شرح المفاهيم اللغوية ببنية واضحة وبساطة وهدف تعليمي.',
+        'skills.c2t': 'تعلم ذاتي في الواجهات', 'skills.c2d': 'بُني بالمجهود الشخصي والتجريب والممارسة المستمرة في HTML وCSS وJavaScript ومنطق التصميم المتجاوب.',
+        'skills.c3t': 'تصميم بصري فريد', 'skills.c3d': 'اهتمام قوي بصناعة واجهات سلسة وحية ومنظمة ولا تُنسى.',
+        'journey.title': 'المسار المهني', 'journey.desc': 'خط زمني سردي يمنح الموقع عمقًا أكبر وهوية فاخرة أقوى.', 'journey.l1': 'المرحلة 1', 'journey.t1': 'أساس أكاديمي في الإنجليزية واللسانيات', 'journey.d1': 'بنى حمزة أساسًا في الدراسات الإنجليزية وطور اهتمامًا جديًا بكيفية اشتغال اللغة وكيفية تدريسها وكيف يفهمها المتعلمون.', 'journey.l2': 'المرحلة 2', 'journey.t2': 'تعلم ذاتي في تطوير الواجهات الأمامية', 'journey.d2': 'إلى جانب التدريس واللغة، استكشف العالم الرقمي بشكل مستقل وتعلم بناء الواجهات وصفحات الهبوط والتجارب المنظمة بصريًا.', 'journey.l3': 'المرحلة 3', 'journey.t3': 'دمج التعليم مع الهوية الرقمية', 'journey.d3': 'اليوم يقدم البورتفوليو ملفًا قادرًا على التعليم والتواصل والتصميم وتنظيم التجارب للمتعلمين والجمهور بشكل راق.',
+        'testi.title': 'قسم الانطباع المهني', 'testi.desc': 'هذه البطاقات الشبيهة بالشهادات تثري الصفحة الرئيسية وتجعل العرض أكثر اكتمالًا.', 'testi.c1t': 'تواصل واضح', 'testi.c1d': 'يقدم الموقع حمزة كشخص قادر على التدريس بوضوح وبناء علاقة مباشرة وإنسانية مع المتعلمين.', 'testi.c2t': 'تجربة متجاوبة', 'testi.c2d': 'كل قسم مصمم ليكون سلسًا ومتجاوبًا ومنظمًا على مختلف الأجهزة وأحجام الشاشات.', 'testi.c3t': 'عرض فاخر', 'testi.c3d': 'اللغة البصرية راقية ومعبرة، مما يحول البورتفوليو إلى بيان هوية وليس مجرد صفحة عادية.',
+        'contact.title': 'تواصل مع حمزة', 'contact.desc': 'قسم تواصل أنيق يمكن من خلاله للزوار الوصول إلى حمزة عبر البريد الإلكتروني أو واتساب أو إنستغرام.', 'contact.h3': 'بيانات التواصل المباشر', 'contact.p': 'تم تصميم هذا القسم بحيث يتمكن الزوار أو المتعلمون أو المتعاونون من التواصل مع حمزة بسرعة ووضوح.', 'contact.email': 'البريد الإلكتروني', 'contact.whatsapp': 'واتساب', 'contact.instagram': 'إنستغرام',
+        'social.email': 'إرسال بريد', 'social.whatsapp': 'فتح واتساب', 'social.instagram': 'زيارة إنستغرام',
+        'form.title': 'إرسال رسالة', 'form.name': 'اسمك', 'form.email': 'بريدك الإلكتروني', 'form.subject': 'الموضوع', 'form.message': 'اكتب رسالتك هنا...', 'form.button': 'تحضير الرسالة',
+        'footer.note': 'بورتفوليو متعدد اللغات لتدريس الإنجليزية واللسانيات وتصميم صفحات الهبوط بالواجهات الأمامية.', 'footer.home': 'الرئيسية', 'footer.about': 'حول', 'footer.work': 'الأعمال', 'footer.contact': 'التواصل'
+      }
+    };
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+    const counters = document.querySelectorAll('[data-counter]');
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const i18nElements = document.querySelectorAll('[data-i18n]');
+    const placeholders = document.querySelectorAll('[data-placeholder]');
+    const formMessage = document.getElementById('formMessage');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    const setActiveLink = () => {
+      let currentId = 'home';
+      sections.forEach((section) => {
+        const top = window.scrollY;
+        const offset = section.offsetTop - 140;
+        const height = section.offsetHeight;
+        if (top >= offset && top < offset + height) currentId = section.getAttribute('id');
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+      });
+    };
+
+    const animateCounter = (element) => {
+      const target = Number(element.dataset.counter);
+      const duration = 1500;
+      const startTime = performance.now();
+      const step = (time) => {
+        const progress = Math.min((time - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        element.textContent = Math.floor(target * eased);
+        if (progress < 1) requestAnimationFrame(step);
+        else element.textContent = target;
+      };
+      requestAnimationFrame(step);
+    };
+
+    const counterObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    function applyLanguage(lang) {
+      const dict = translations[lang];
+      if (!dict) return;
+
+      i18nElements.forEach((el) => {
+        const key = el.dataset.i18n;
+        if (dict[key]) el.innerHTML = dict[key];
+      });
+
+      placeholders.forEach((el) => {
+        const key = el.dataset.placeholder;
+        if (dict[key]) el.placeholder = dict[key];
+      });
+
+      document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      langButtons.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    });
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+    applyLanguage('en');
+
+    const hoverCards = document.querySelectorAll('.stat-card, .feature-card, .course-card, .project-card, .stack-card, .testimonial-card');
+    hoverCards.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateY = ((x / rect.width) - 0.5) * 8;
+        const rotateX = ((y / rect.height) - 0.5) * -8;
+        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        formMessage.textContent = document.documentElement.lang === 'fr'
+          ? 'Veuillez remplir tous les champs avant l’envoi.'
+          : document.documentElement.lang === 'ar'
+          ? 'يرجى ملء جميع الخانات قبل الإرسال.'
+          : 'Please fill in all fields before sending.';
+        formMessage.style.color = '#fecdd3';
+        return;
+      }
+
+      formMessage.textContent = document.documentElement.lang === 'fr'
+        ? `Merci ${name}, votre message a bien été préparé.`
+        : document.documentElement.lang === 'ar'
+        ? `شكرًا ${name}، تم تجهيز رسالتك بنجاح.`
+        : `Thank you ${name}, your message has been prepared successfully.`;
+      formMessage.style.color = '#dcfce7';
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
